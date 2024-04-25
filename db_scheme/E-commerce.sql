@@ -23,7 +23,7 @@ CREATE TABLE "desires" (
   "image_url" text
 );
 
-CREATE TABLE "produts" (
+CREATE TABLE "products" (
   "id" SERIAL PRIMARY KEY,
   "created_at" timestamp,
   "updated_at" timestamp,
@@ -72,7 +72,7 @@ CREATE TABLE "desire_messages" (
   "chat_id" serial,
   "sender_id" serial,
   "content" text,
-  "image_url" test
+  "image_url" text
 );
 
 CREATE TABLE "product_messages" (
@@ -111,7 +111,7 @@ CREATE TABLE "bookmarks" (
 
 ALTER TABLE "desires" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
-ALTER TABLE "produts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
+ALTER TABLE "products" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
 ALTER TABLE "desire_likes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
@@ -119,7 +119,7 @@ ALTER TABLE "desire_likes" ADD FOREIGN KEY ("desire_id") REFERENCES "desires" ("
 
 ALTER TABLE "product_likes" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
-ALTER TABLE "product_likes" ADD FOREIGN KEY ("product_id") REFERENCES "produts" ("id");
+ALTER TABLE "product_likes" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 
 ALTER TABLE "desire_chats" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
@@ -127,7 +127,7 @@ ALTER TABLE "desire_chats" ADD FOREIGN KEY ("desire_id") REFERENCES "desires" ("
 
 ALTER TABLE "product_chats" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
-ALTER TABLE "product_chats" ADD FOREIGN KEY ("product_id") REFERENCES "produts" ("id");
+ALTER TABLE "product_chats" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 
 ALTER TABLE "desire_messages" ADD FOREIGN KEY ("chat_id") REFERENCES "desire_chats" ("id");
 
@@ -135,7 +135,7 @@ ALTER TABLE "product_messages" ADD FOREIGN KEY ("chat_id") REFERENCES "product_c
 
 ALTER TABLE "reviews" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
-ALTER TABLE "reviews" ADD FOREIGN KEY ("product_id") REFERENCES "produts" ("id");
+ALTER TABLE "reviews" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
 
 ALTER TABLE "reposts" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
@@ -143,4 +143,4 @@ ALTER TABLE "reposts" ADD FOREIGN KEY ("desire_id") REFERENCES "desires" ("id");
 
 ALTER TABLE "bookmarks" ADD FOREIGN KEY ("user_id") REFERENCES "users" ("id");
 
-ALTER TABLE "bookmarks" ADD FOREIGN KEY ("product_id") REFERENCES "produts" ("id");
+ALTER TABLE "bookmarks" ADD FOREIGN KEY ("product_id") REFERENCES "products" ("id");
